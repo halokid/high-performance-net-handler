@@ -66,6 +66,10 @@ func (w Worker) Start() {
       // todo: 每一次只有  3 个  work_pool 处理， 其他的都在等候, 这里每一次就是写进 3 个 job_channel 进去 work_pool, 不断监听处理， 处理完3个再处理3个， 一直处理光
 
       // fixme: 为什么注释掉这句， 不会执行  job.pay_load.Do() 里面的逻辑， 因为在 dispatcher  在读取 worker_pool, 这里如果不写进worker_pool， 就会堵塞在 dispatcher函数那里， 不对， 下面 job := w.job_channel有写入啊
+
+      // fixme: 逻辑上应该是这样, 这个 for 监听 channel 的用户， 实际上不能是死循环， 应该是有一个循环的大小的， 那么
+      // fixme:  w.work_pool <- w.job_channel 就是这个循环的大小， 这一句的意义是定义这个 for循环几次用的。。
+      // fixme: 因为  w.work_pool 的大小是3， 所以这个 for 循环每次就是 循环 3 次， 每次处理 3 个 job
       w.work_pool <- w.job_channel      // 是不是有点奇怪， 怎么把同一个结构体的变量赋予自己呢？
       fmt.Println(w.job_channel)
 
