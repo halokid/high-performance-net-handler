@@ -65,14 +65,14 @@ func (w Worker) Start() {
       // todo: 然后再把 job_channel 的东西写进 work_pool， 为什么要这么傻逼？？ 因为要控制
       // todo: 每一次只有  3 个  work_pool 处理， 其他的都在等候, 这里每一次就是写进 3 个 job_channel 进去 work_pool, 不断监听处理， 处理完3个再处理3个， 一直处理光
 
-      // fixme: 为什么注释掉这句， 不会执行  job.pay_load.Do() 里面的逻辑， 因为在 dispatcher  在读取 worker_pool, 这里如果不写进worker_pool， 就会堵塞在 dispatcher函数那里
+      // fixme: 为什么注释掉这句， 不会执行  job.pay_load.Do() 里面的逻辑， 因为在 dispatcher  在读取 worker_pool, 这里如果不写进worker_pool， 就会堵塞在 dispatcher函数那里， 不对， 下面 job := w.job_channel有写入啊
       w.work_pool <- w.job_channel      // 是不是有点奇怪， 怎么把同一个结构体的变量赋予自己呢？
       fmt.Println(w.job_channel)
 
       select {
       // 在 job_channel 这个 channel 里面取出 job， job就是要处理的任务
       case job := <- w.job_channel:
-        fmt.Println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        fmt.Println("--------@@@@@@@@@@@@@@@@@@------------------------\n\n")
         //  开始处理任务， 这里有两个方式来写这段代码
         //  1.  定义一个通用的处理函数， 来处理
         //  2.  定义一个 属于 job 结构体的函数来处理

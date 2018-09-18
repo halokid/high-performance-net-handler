@@ -73,10 +73,17 @@ func (d *Dispatcher) dispatcher() {
         // todo: 因为根本就没有程序写入过 worker_pool, 所以这里会一直堵塞住  woerk_pool 这个channel
 
         // todo: 只要 worker Start() 还没处理完 worker_pool  的东西， 这里都会堵塞
+
+        // todo: 堵塞读取 work_pool， 不断监听 worker_pool 的写入
+
+        // todo: 关键理解点是， channel的特性， channel是 有东西在读的时候， 它不给其他东西写， 有东西在写的时候， 它不给其他东西读
+        // todo: 这里这样写是为了原子性考虑， 有个东西正在读 work_pool channel, 那么就不给写入了， 这样就保证了数据的一致性
         job_channel := <-d.worker_pool
 
         // todo: 上面在堵塞channel， 不影响同线程的逻辑继续执行， 这里继续执行， 这里把 从 Job_queue 取得的job写进  job_channel, 写完为止
         // 分发任务到 worker job channel 中
+
+        // todo: 把要处理的job 写进 job_channel, 写入的时候， 在 worker 的 Start 里面的 work_pool 就会读取 job_channel的数据， 因为 work_pool 的len 是3， 所以每次只能读取 3 个job， 每次只能处理3个job
         job_channel <- job
 
       }(job)      // 这个 job就是 case 上面获取的job
