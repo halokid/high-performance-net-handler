@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+ "time"
+  "./worker"
+)
 
 var (
   max_worker = 3
