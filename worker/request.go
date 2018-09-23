@@ -1,10 +1,9 @@
 package worker
 
 import (
-  "fmt"
-  "net/http"
   "../handler"
   "../utils"
+  "net/http"
 )
 
 type Request struct {

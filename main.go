@@ -1,8 +1,8 @@
 package main
 
 import (
- "time"
   "./worker"
+  "time"
 )
 
 var (
