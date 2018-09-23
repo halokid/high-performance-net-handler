@@ -1,6 +1,11 @@
 package worker
 
-import "fmt"
+import (
+  "fmt"
+  "net/http"
+  "../handler"
+  "../utils"
+)
 
 type Request struct {
   job Job
@@ -14,7 +19,8 @@ func NewRequest(max_job int) (*Request)  {
 }
 
 
-// set the job to job_queue
+/**
+// set the job to job_queue, just for test request
 func (r *Request) Run() {
   for i := 1; i < int(r.job.pay_load); i++ {
     job := Job{ pay_load:  Payload(i) }
@@ -22,6 +28,19 @@ func (r *Request) Run() {
     Job_queue <- job
   }
 }
+
+**/
+
+
+
+// HTTP listening
+func (r *Request) Run() {
+  http.HandleFunc("/hpnh", handler.HttpHandle)
+  err := http.ListenAndServe(":8089", nil)
+  utils.CheckErr(err)
+
+}
+
 
 
 
