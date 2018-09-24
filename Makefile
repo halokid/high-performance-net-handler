@@ -1,9 +1,11 @@
 build:
-	go build
+	go build && mv high-performance-net-handler	 hpnh
 
+gotest:
+	cd ./test &&  go test && cd ../ 
 
 run:
-	./high-performance-net-handler	
+	./hpnh	
 
 all: build run
 
