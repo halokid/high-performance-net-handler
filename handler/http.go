@@ -1,11 +1,11 @@
 package handler
 
-import (
-  "fmt"
-  "net/http"
-)
+import "fmt"
 
-func HttpHandle(w http.ResponseWriter, r *http.Request) {
-  fmt.Println("HTTP handle start -------- ")
-  fmt.Fprintf(w,"handle http request")
+func HandleProcess() {
+  fmt.Println("http handle process int backend\n\n")
+  // todo: do your backend work here
 }
+
+
+

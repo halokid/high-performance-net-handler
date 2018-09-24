@@ -8,23 +8,18 @@ import (
 var (
   max_worker = 3
   max_job = 10
+  handle_type = "http"   // set network protocol type
 )
 
-
 func main() {
-  // dispatcher the requests, make worker to process the request
-  dispatcher := worker.NewDispatcher(max_worker)
+  // make the worker, listening work_pool channel
+  dispatcher := worker.NewDispatcher(max_worker, handle_type)
   dispatcher.Run()
 
-  // fixme: make the request, just for test
-  request := worker.NewRequest(max_job)
+  // get requet
+  request := worker.NewRequest(max_job, handle_type)
   request.Run()
 
   time.Sleep(time.Second * 10)
 }
-
-
-
-
-
 
