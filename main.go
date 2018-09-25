@@ -1,7 +1,8 @@
 package main
 
 import (
-  "./worker"
+  //"./worker"
+  "github.com/r00tjimmy/high-performance-net-handler/worker"
   "time"
 )
 

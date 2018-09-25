@@ -1,7 +1,7 @@
 package worker
 
 import (
-  "../utils"
+  "github.com/r00tjimmy/high-performance-net-handler/utils"
   "fmt"
   "net/http"
 )
@@ -22,7 +22,6 @@ func NewRequest(max_job int, handle_type string) (*Request)  {
 /**
 // set the job to job_queue, just for test request
 func (r *Request) Run() {
-  // fixme: 循环添加进去所有的job, pay_load 只是记录job的次序的， 表示正在处理到那个job， 并没实际意义
   for i := 1; i < int(r.job.pay_load); i++ {
     job := Job{ pay_load:  Payload(i) }
     fmt.Println("put ---", i, "--- job into job_queue, job_queue only get one job every time ")

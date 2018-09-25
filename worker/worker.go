@@ -2,7 +2,7 @@ package worker
 
 import (
   "fmt"
-  "../handler"
+  "github.com/r00tjimmy/high-performance-net-handler/handler"
 )
 
 type Job struct {
@@ -53,7 +53,6 @@ func (w *Worker) Start() {
   go func() {
     for {
       // use job_channel put in work_pool
-      // fixme: 阻塞， 这种写法就是假如没有数据读取信道 w.work_pool， 这里会堵塞
       w.work_pool <- w.job_channel
       select {
       case job := <- w.job_channel:

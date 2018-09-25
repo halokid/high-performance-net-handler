@@ -33,10 +33,8 @@ func (d *Dispatcher) dispatcher() {
     select {
     case job := <- Job_queue:
       go func(job Job) {
-        // fixme: 读取 work_pool，  Start() 方法写进 work_pool， 这里是读取 work_pool, 如果 work_pool 信道没有数据， 这里会堵塞
         //job_channel := <- d.work_pool
         job_channel := <- d.work_pool
-        // fixme: 这里如果写成 _ := <- d.work_pool 会产生错误， 信道读取必须要赋予变量
         //_ := <- d.work_pool
 
         job_channel <- job
