@@ -52,7 +52,8 @@ func (r *Request) SetHandle() {
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
   fmt.Println("HTTP handle start -------- ")
   // if no error
-  job := Job{ PayLoad(1) }
+  get_job := 1
+  job := Job{pay_load: PayLoad(get_job) }
   fmt.Println("put ---", 1, "--- job into job_queue, job_queue only get one job every time ")
   Job_queue <- job
 

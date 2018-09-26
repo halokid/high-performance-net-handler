@@ -1,9 +1,7 @@
 package main
 
 import (
-  //"./worker"
   "github.com/r00tjimmy/high-performance-net-handler/worker"
-  "time"
 )
 
 var (
@@ -21,6 +19,5 @@ func main() {
   request := worker.NewRequest(max_job, handle_type)
   request.Run()
 
-  time.Sleep(time.Second * 10)
 }
 
