@@ -1,0 +1,60 @@
+# ab -c 600 -n 40000 http://172.20.72.33:8089/hpnh
+This is ApacheBench, Version 2.3 <$Revision: 1430300 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 172.20.72.33 (be patient)
+Completed 4000 requests
+Completed 8000 requests
+Completed 12000 requests
+Completed 16000 requests
+Completed 20000 requests
+Completed 24000 requests
+Completed 28000 requests
+Completed 32000 requests
+Completed 36000 requests
+Completed 40000 requests
+Finished 40000 requests
+
+
+Server Software:
+Server Hostname:        172.20.72.33
+Server Port:            8089
+
+Document Path:          /hpnh
+Document Length:        19 bytes
+
+Concurrency Level:      600
+Time taken for tests:   2.397 seconds
+Complete requests:      40000
+Failed requests:        0
+Write errors:           0
+Total transferred:      5440000 bytes
+HTML transferred:       760000 bytes
+Requests per second:    16688.97 [#/sec] (mean)
+Time per request:       35.952 [ms] (mean)
+Time per request:       0.060 [ms] (mean, across all concurrent requests)
+Transfer rate:          2216.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   18 109.3      6    1021
+Processing:     0   17  15.6     13     285
+Waiting:        0   15  15.5     10     281
+Total:          1   35 112.4     20    1221
+
+Percentage of the requests served within a certain time (ms)
+  50%     20
+  66%     23
+  75%     27
+  80%     29
+  90%     39
+  95%     47
+  98%     65
+  99%   1022
+ 100%   1221 (longest request)
+
+
+
+
+

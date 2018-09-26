@@ -43,6 +43,7 @@ func main() {
 
 ### examples code build && test && run
 ```
+
 cd examples
 
 # just build
@@ -56,7 +57,16 @@ make gotest
 # auto build and run 
 make all
 
-
-
 ```
+
+
+### performance reports
+
+hardware:        4C 16G
+OS:                    CentOS 7.4 x64
+
+comapre  Apache/2.4.12 with  hpnh  use ab tool. detail can see the report files, the performance reports files in folder preformance_reports
+
+
+
 
