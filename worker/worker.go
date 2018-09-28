@@ -20,7 +20,7 @@ func (p PayLoad) Do() (err error) {
 **/
 
 func (p PayLoad) HttpDo() (err error) {
-  handler.HandleProcess()
+  handler.HttpProcess()
   err = nil
   return err
 }
@@ -30,6 +30,7 @@ type Worker struct {
   job_channel     chan Job
   quit            chan bool
   handle_type     string
+  debug_flag      bool
 }
 
 
@@ -39,12 +40,13 @@ func init() {
   Job_queue = make(chan Job, 1)
 }
 
-func NewWorker(work_pool chan chan Job, handle_type string) Worker {
+func NewWorker(work_pool chan chan Job, handle_type string, debug_flag bool) Worker {
   return Worker{
     work_pool:      work_pool,
     job_channel:    make(chan Job),
     quit:           make(chan bool),
     handle_type:    handle_type,
+    debug_flag:     debug_flag,
   }
 }
 

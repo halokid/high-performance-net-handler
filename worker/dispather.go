@@ -3,14 +3,15 @@ package worker
 import "fmt"
 
 type Dispatcher struct {
-  work_pool   chan chan Job
-  len         int
-  handle_type  string
+  work_pool     chan chan Job
+  len           int
+  handle_type   string
+  debug_flag    bool
 }
 
-func NewDispatcher(max_worker int, handle_type string) *Dispatcher {
+func NewDispatcher(max_worker int, handle_type string, debug_flag bool) *Dispatcher {
   worker_pool := make(chan chan Job, max_worker)
-  return  &Dispatcher{ work_pool:  worker_pool, len:  max_worker, handle_type: handle_type }
+  return  &Dispatcher{ work_pool:  worker_pool, len:  max_worker, handle_type: handle_type, debug_flag: debug_flag }
 }
 
 func (d *Dispatcher) Run() {
@@ -19,7 +20,7 @@ func (d *Dispatcher) Run() {
   // todo: this will use job_channel put in work_pool first
   fmt.Println("make ", d.len, " workers for process jobs")
   for i := 0; i < d.len; i++ {
-    worker := NewWorker(d.work_pool, d.handle_type)
+    worker := NewWorker(d.work_pool, d.handle_type, d.debug_flag)
     worker.Start()
   }
 

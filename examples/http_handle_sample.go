@@ -12,7 +12,7 @@ var (
 
 func main() {
   // make the worker, listening work_pool channel
-  dispatcher := worker.NewDispatcher(max_worker, handle_type)
+  dispatcher := worker.NewDispatcher(max_worker, handle_type, true)
   dispatcher.Run()
 
   // get requet

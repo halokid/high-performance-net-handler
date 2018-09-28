@@ -35,7 +35,7 @@ func (r *Request) Run() {
 
 // HTTP listening
 func (r *Request) Run() {
-  r.handle_type = "http"
+  //r.handle_type = "http"
   r.SetHandle()
 }
 
@@ -48,9 +48,11 @@ func (r *Request) SetHandle() {
   }
 }
 
-
+// set response to  HTTP
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
-  fmt.Println("HTTP handle start -------- ")
+  //fmt.Println()
+  fmt.Println("------------------------- [JOB START] -------------------------")
+  fmt.Println("[JOB] --------- HTTP handle start -------- ")
   // if no error
   get_job := 1
   job := Job{pay_load: PayLoad(get_job) }
@@ -58,6 +60,7 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
   Job_queue <- job
 
   fmt.Fprintf(w, "handle http request")
+  fmt.Println("------------------------- [JOB END] -------------------------")
 }
 
 
