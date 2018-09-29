@@ -40,13 +40,12 @@ func init() {
   Job_queue = make(chan Job, 1)
 }
 
-func NewWorker(work_pool chan chan Job, handle_type string, debug_flag bool) Worker {
+func NewWorker(work_pool chan chan Job, handle_type string) Worker {
   return Worker{
     work_pool:      work_pool,
     job_channel:    make(chan Job),
     quit:           make(chan bool),
     handle_type:    handle_type,
-    debug_flag:     debug_flag,
   }
 }
 
