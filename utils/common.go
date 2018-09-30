@@ -25,3 +25,15 @@ func DebugLog(content string) {
     log_file_handle.WriteString(content + "\n\n")
   }
 }
+
+
+/**
+check os path exist or not
+ */
+func PathExists(path string) (bool, error) {
+  _, err := os.Stat(path)
+  if err == nil {
+    return true, nil
+  }
+  return false, err
+}
