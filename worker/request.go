@@ -2,8 +2,9 @@ package worker
 
 import (
   "github.com/r00tjimmy/high-performance-net-handler/utils"
-  "fmt"
+  //"fmt"
   "net/http"
+  "github.com/r00tjimmy/high-performance-net-handler/handler"
 )
 
 type Request struct {
@@ -34,6 +35,7 @@ func (r *Request) Run() {
 
 
 // HTTP listening
+// TODO: get job from frontend
 func (r *Request) Run() {
   //r.handle_type = "http"
   r.SetHandle()
@@ -43,26 +45,41 @@ func (r *Request) Run() {
 func (r *Request) SetHandle() {
   if r.handle_type == "http" {
     http.HandleFunc("/hpnh", HttpHandle)
+    http.HandleFunc("/hpnh_upload", HttpUpload)
     err := http.ListenAndServe(":8089", nil)
     utils.CheckErr(err)
   }
 }
 
+
+// decorator for handler
+//var HandleDecorator =
+
+
 // set response to  HTTP
+// TODO: handler for web frontend
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
   //fmt.Println()
-  fmt.Println("------------------------- [JOB START] -------------------------")
-  fmt.Println("[JOB] --------- HTTP handle start -------- ")
+  utils.DebugLog("------------------------- [JOB START] -------------------------")
+  utils.DebugLog("[JOB] --------- HTTP handle start -------- ")
   // if no error
   get_job := 1
   job := Job{pay_load: PayLoad(get_job) }
-  fmt.Println("put ---", 1, "--- job into job_queue, job_queue only get one job every time ")
+  utils.DebugLog("put --- 1 --- job into job_queue, job_queue only get one job every time ")
   Job_queue <- job
 
-  fmt.Fprintf(w, "handle http request")
-  fmt.Println("------------------------- [JOB END] -------------------------")
+  //fmt.Fprintf(w, "handle http request")
+  handler.HttpFrontSample(w, r)
+  utils.DebugLog("------------------------- [JOB END] -------------------------")
 }
 
+
+
+// http upload frontend
+func HttpUpload(w http.ResponseWriter, r *http.Request) {
+  utils.DebugLog("[JOB START] HttpUpload -------------------------")
+  handler.HttpUploadHandle(w, r)
+}
 
 
 

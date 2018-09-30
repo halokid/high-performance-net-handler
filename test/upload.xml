@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result uuid= "15c221be-6ab2-ef53-1589-fe16877914f4" ip="1.1.1.1" template_time= "2017-01-07 08:54:02">
+	<initcmd>
+		<cmd info="18-09-11"></cmd>
+			<command><![CDATA[ ]]></command>
+			<value><![CDATA[ ]]></value>
+	</initcmd>
+	<security type="auto">
+		<item flag="38719">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then red_ret=`cat /etc/pam.d/system-auth | grep -v "^[[:space:]]*#" | grep "auth[[:space:]]*required[[:space:]]*pam_tally.so[[:space:]]*deny=5[[:space:]]*unlock_time=[0-9]*"`;fi
+if [ -s /etc/pam.d/system-auth ];then red_ret2=`cat /etc/pam.d/system-auth | grep -v "^[[:space:]]*#" | grep "account[[:space:]]*required[[:space:]]*pam_tally.so"`;fi
+if [ -s /etc/pam.d/common-auth ];then suse_ret=`cat /etc/pam.d/common-auth | grep -v "^[[:space:]]*#" | grep "auth[[:space:]]*required[[:space:]]*pam_tally.so[[:space:]]*deny=5[[:space:]]*unlock_time=[0-9]*"`;fi
+if [ -s /etc/pam.d/common-account ];then suse_ret2=`cat /etc/pam.d/common-account | grep -v "^[[:space:]]*#" | grep "account[[:space:]]*required[[:space:]]*pam_tally.so"`;fi
+if [ -s /etc/pam.d/passwd ];then suse_ret3=`cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#" | grep "auth[[:space:]]*required[[:space:]]*pam_tally.so[[:space:]]*deny=5[[:space:]]*unlock_time=[0-9]*"`;fi
+if [ -s /etc/pam.d/passwd ];then suse_ret4=`cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#" | grep "account[[:space:]]*required[[:space:]]*pam_tally.so"`;fi
+if [[ -n "$red_ret" && -n "$red_ret2" ]];then echo "redhat:valid";elif [[ -n "$suse_ret" && -n "$suse_ret2" ]];then echo "suse:valid";elif [[ -n "$suse_ret3" && -n "suse_ret4" ]];then echo "suse2:valid";else echo "ret:not value";fi]]></command>
+			<value><![CDATA[ret:not value]]></value>
+			</cmd>
+		</item>
+		<item flag="61686">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/sshd ];then ret1=`cat /etc/pam.d/sshd  | grep -v "^[[:space:]]*#" | grep "auth[[:space:]]*required[[:space:]]*pam_tally.so[[:space:]]*deny=5[[:space:]]*unlock_time=[0-9]*"`;fi
+if [ -s /etc/pam.d/sshd ];then ret2=`cat /etc/pam.d/sshd  | grep -v "^[[:space:]]*#" | grep "account[[:space:]]*required[[:space:]]*pam_tally.so"`;fi
+if [[ -n "$ret1" && -n "$ret2" ]];then echo "result:valid";else echo "result:invalue";fi]]></command>
+			<value><![CDATA[result:invalue]]></value>
+			</cmd>
+		</item>
+		<item flag="34023">
+			<cmd info="">
+			<command><![CDATA[awk -F: '{if($1=="adm"||$1=="lp"||$1=="mail"||$1=="uucp"||$1=="operator"||$1=="games"||$1=="gopher"||$1=="ftp"||$1=="nobody"||$1=="nobody4"||$1=="noaccess"||$1=="listen"||$1=="webservd"||$1=="rpm"||$1=="dbus"||$1=="avahi"||$1=="mailnull"||$1=="smmsp"||$1=="nscd"||$1=="vcsa"||$1=="rpc"||$1=="rpcuser"||$1=="nfsnobody"||$1=="sshd"||$1=="pcap"||$1=="ntp"||$1=="haldaemon"||$1=="distcache"||$1=="apache"||$1=="webalizer"||$1=="squid"||$1=="xfs"||$1=="gdm"||$1=="sabayon"||$1=="named"){if($2!="*"&&$2!~/!/)flag++}};END{if(flag==0)print "ok";else print "no"}' /etc/shadow]]></command>
+			<value><![CDATA[ok]]></value>
+			</cmd>
+		</item>
+		<item flag="55303">
+			<cmd info="">
+			<command><![CDATA[if [ -f /etc/redhat-release ];then cat /etc/redhat-release;uname -a;echo "result:yes";elif [ -f /etc/SuSE-release ]; then cat /etc/SuSE-release;uname -a;echo "result:yes";fi]]></command>
+			<value><![CDATA[redhat-7
+Linux eaopsadsvr01 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+result:yes]]></value>
+			</cmd>
+		</item>
+		<item flag="62196">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^time"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62903">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "daytime"]]></command>
+			<value><![CDATA[	daytime-dgram: 	off
+	daytime-stream:	off]]></value>
+			</cmd>
+		</item>
+		<item flag="62300">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^klogin"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62820">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^tftp"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="61858">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc3.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   20 Mar 24  2017 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 S10network -&gt; ../init.d/network
+lrwxrwxrwx   1 root root   16 Jan 22  2018 S64mysqld -&gt; ../init.d/mysqld]]></value>
+			</cmd>
+		</item>
+		<item flag="36563">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/group]]></command>
+			<value><![CDATA[-rw-r--r-- 1 root root 1097 May 17 15:30 /etc/group]]></value>
+			</cmd>
+		</item>
+		<item flag="49332">
+			<cmd info="">
+			<command><![CDATA[if [ -f /etc/ntp.conf ];then cat /etc/ntp.conf | grep -v "^[[:space:]]*#" | grep 'server' | grep -v "127.127.1.0" | grep -v "127.0.0.1";fi]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="19276">
+			<cmd info="">
+			<command><![CDATA[cat   /etc/syslog.conf | grep  /var/log/secure   || echo authpriv not config]]></command>
+			<value><![CDATA[authpriv not config]]></value>
+			</cmd>
+		</item>
+		<item flag="19410">
+			<cmd info="">
+			<command><![CDATA[cat   /etc/syslog.conf | grep  /var/log/maillog   || echo main not config]]></command>
+			<value><![CDATA[main not config]]></value>
+			</cmd>
+		</item>
+		<item flag="20938">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/xinetd.d/telnet ] ; then cat  /etc/xinetd.d/telnet | grep disable; else echo disbale = yes ;fi]]></command>
+			<value><![CDATA[disbale = yes]]></value>
+			</cmd>
+		</item>
+		<item flag="19219">
+			<cmd info="">
+			<command><![CDATA[cat   /etc/syslog.conf | grep /var/log/messages    || echo info not config]]></command>
+			<value><![CDATA[info not config]]></value>
+			</cmd>
+		</item>
+		<item flag="1049">
+			<cmd info="">
+			<command><![CDATA[file="/etc/login.defs";if [ -s ${file} ];then ret=`cat ${file} | grep -v "#" | grep PASS_MAX_DAYS | awk -F ' ' '{print $2}'`;fi
+if [ 0 -ne $ret  -a  90 -ge $ret ];then echo "PASS_MAX_DAYS ok";else echo "PASS_MAX_DAYS  fail";fi]]></command>
+			<value><![CDATA[PASS_MAX_DAYS ok]]></value>
+			</cmd>
+		</item>
+		<item flag="60395">
+			<cmd info="">
+			<command><![CDATA[unset syslogd_status syslogng_status rsyslogd_status LOGDIR;
+syslogd_status=`ps -ef |grep ' syslogd '|grep -v "grep"|wc -l`;
+syslogng_status=`ps -ef |grep "/syslog-ng"|grep -v "grep /syslog-ng"|wc -l`;
+rsyslogd_status=`ps -ef | grep "\/rsyslogd " | grep -v "grep" |wc -l`;
+if [ $syslogd_status != 0 ];then LOGDIR=`if [ -f /etc/syslog.conf ];then cat /etc/syslog.conf| grep -v "^[[:space:]]*#" |sed '/^#/d' |sed '/^$/d' |awk '(($2!~/@/) && ($2!~/*/) && ($2!~/-/)) {print $2}';fi`;ls -l $LOGDIR 2>/dev/null | grep  "^-" | cut -b 5-10;elif [ $rsyslogd_status != 0 ];then LOGDIR=`cat /etc/rsyslog.conf | grep -v "^[[:space:]]*#" |sed '/^#/d' |sed '/^$/d' |awk '(($2!~/@/) && ($2!~/*/) && ($2!~/-/)) {print $2}'`;ls -l $LOGDIR 2>/dev/null | grep "^-" | cut -b 5-10;elif [[ $syslogng_status != 0 ]];then LOGDIR=`cat /etc/syslog-ng/syslog-ng.conf|grep -v "^[[:space:]]*#"|grep "^destination"|grep file|cut -d\" -f2`;ls -l $LOGDIR 2>/dev/null | grep "^-" | cut -b 5-10;else echo "syslog is not running.";fi;
+unset syslogd_status syslogng_status rsyslogd_status LOGDIR;]]></command>
+			<value><![CDATA[r--r--
+------
+------
+------
+------
+------]]></value>
+			</cmd>
+		</item>
+		<item flag="19312">
+			<cmd info="">
+			<command><![CDATA[cat   /etc/syslog.conf | grep  /var/log/cron   || echo cron not config]]></command>
+			<value><![CDATA[cron not config]]></value>
+			</cmd>
+		</item>
+		<item flag="18273">
+			<cmd info="">
+			<command><![CDATA[cat /etc/resolv.conf  | grep nameserver]]></command>
+			<value><![CDATA[nameserver	10.86.11.245]]></value>
+			</cmd>
+		</item>
+		<item flag="36950">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/shadow]]></command>
+			<value><![CDATA[---------- 1 root root 1926 Sep  6 16:21 /etc/shadow]]></value>
+			</cmd>
+		</item>
+		<item flag="36239">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/passwd]]></command>
+			<value><![CDATA[-rw-r--r-- 1 root root 2592 May 17 15:30 /etc/passwd]]></value>
+			</cmd>
+		</item>
+		<item flag="61923">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc.d/init.d/]]></command>
+			<value><![CDATA[total 48
+drwxr-xr-x.  2 root root    79 Jul  6 10:37 .
+drwxr-xr-x. 10 root root  4096 Nov 20  2015 ..
+-rw-r--r--.  1 root root 13948 Sep 16  2015 functions
+-rwx------   1 root root 10576 Jan 22  2018 mysqld
+-rwxr-xr-x.  1 root root  2989 Sep 16  2015 netconsole
+-rwxr-xr-x.  1 root root  6630 Sep 16  2015 network
+-rw-r--r--.  1 root root  1160 Nov 20  2015 README]]></value>
+			</cmd>
+		</item>
+		<item flag="62162">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^kshell"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="3346">
+			<cmd info="">
+			<command><![CDATA[cat "/etc/login.defs"]]></command>
+			<value><![CDATA[#
+# Please note that the parameters in this configuration file control the
+# behavior of the tools from the shadow-utils component. None of these
+# tools uses the PAM mechanism, and the utilities that use PAM (such as the
+# passwd command) should therefore be configured elsewhere. Refer to
+# /etc/pam.d/system-auth for more information.
+#
+
+# *REQUIRED*
+#   Directory where mailboxes reside, _or_ name of file, relative to the
+#   home directory.  If you _do_ define both, MAIL_DIR takes precedence.
+#   QMAIL_DIR is for Qmail
+#
+#QMAIL_DIR	Maildir
+MAIL_DIR	/var/spool/mail
+#MAIL_FILE	.mail
+
+# Password aging controls:
+#
+#	PASS_MAX_DAYS	Maximum number of days a password may be used.
+#	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
+#	PASS_MIN_LEN	Minimum acceptable password length.
+#	PASS_WARN_AGE	Number of days warning given before a password expires.
+#
+PASS_MAX_DAYS	90
+PASS_MIN_DAYS	0
+PASS_MIN_LEN	8
+PASS_WARN_AGE	7
+
+#
+# Min/max values for automatic uid selection in useradd
+#
+UID_MIN                  1000
+UID_MAX                 60000
+# System accounts
+SYS_UID_MIN               201
+SYS_UID_MAX               999
+
+#
+# Min/max values for automatic gid selection in groupadd
+#
+GID_MIN                  1000
+GID_MAX                 60000
+# System accounts
+SYS_GID_MIN               201
+SYS_GID_MAX               999
+
+#
+# If defined, this command is run when removing a user.
+# It should remove any at/cron/print jobs etc. owned by
+# the user to be removed (passed as the first argument).
+#
+#USERDEL_CMD	/usr/sbin/userdel_local
+
+#
+# If useradd should create home directories for users by default
+# On RH systems, we do. This option is overridden with the -m flag on
+# useradd command line.
+#
+CREATE_HOME	yes
+
+# The permission mask is initialized to this value. If not specified, 
+# the permission mask will be initialized to 022.
+UMASK           077
+
+# This enables userdel to remove user groups if no members exist.
+#
+USERGROUPS_ENAB yes
+
+# Use SHA512 to encrypt password.
+ENCRYPT_METHOD SHA512 
+]]></value>
+			</cmd>
+		</item>
+		<item flag="53293">
+			<cmd info="">
+			<command><![CDATA[unset count status;
+count=`chkconfig --list | grep -cE 'ntp|ntpd' `;
+if [ "$count" -ge 1 ];then status=`ps aux | grep -E 'ntp |ntpd ' | grep -cv "grep -E ntp |ntpd "`;if [ "$status" -ge 1 ];then echo "ntp:start";else echo "ntp:stop";fi;else "ntp:need install ntp service";fi;
+unset count status;]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="32465">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then cat /etc/pam.d/system-auth|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/common-password ];then cat /etc/pam.d/common-password|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/passwd ];then cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#";fi]]></command>
+			<value><![CDATA[auth        required      pam_env.so
+auth        sufficient    pam_fprintd.so
+auth        sufficient    pam_unix.so nullok try_first_pass remember=5
+auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
+auth        required      pam_deny.so
+
+account     required      pam_unix.so
+account     sufficient    pam_localuser.so
+account     sufficient    pam_succeed_if.so uid < 1000 quiet
+account     required      pam_permit.so
+
+password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
+password    required      pam_deny.so
+
+session     optional      pam_keyinit.so revoke
+session     required      pam_limits.so
+-session     optional      pam_systemd.so
+session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+session     required      pam_unix.so]]></value>
+			</cmd>
+		</item>
+		<item flag="32452">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then cat /etc/pam.d/system-auth|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/common-password ];then cat /etc/pam.d/common-password|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/passwd ];then cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#";fi]]></command>
+			<value><![CDATA[auth        required      pam_env.so
+auth        sufficient    pam_fprintd.so
+auth        sufficient    pam_unix.so nullok try_first_pass remember=5
+auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
+auth        required      pam_deny.so
+
+account     required      pam_unix.so
+account     sufficient    pam_localuser.so
+account     sufficient    pam_succeed_if.so uid < 1000 quiet
+account     required      pam_permit.so
+
+password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
+password    required      pam_deny.so
+
+session     optional      pam_keyinit.so revoke
+session     required      pam_limits.so
+-session     optional      pam_systemd.so
+session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+session     required      pam_unix.so]]></value>
+			</cmd>
+		</item>
+		<item flag="32529">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then cat /etc/pam.d/system-auth|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/common-password ];then cat /etc/pam.d/common-password|grep -v "^[[:space:]]*#";elif [ -s /etc/pam.d/passwd ];then cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#";fi]]></command>
+			<value><![CDATA[auth        required      pam_env.so
+auth        sufficient    pam_fprintd.so
+auth        sufficient    pam_unix.so nullok try_first_pass remember=5
+auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
+auth        required      pam_deny.so
+
+account     required      pam_unix.so
+account     sufficient    pam_localuser.so
+account     sufficient    pam_succeed_if.so uid < 1000 quiet
+account     required      pam_permit.so
+
+password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
+password    required      pam_deny.so
+
+session     optional      pam_keyinit.so revoke
+session     required      pam_limits.so
+-session     optional      pam_systemd.so
+session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+session     required      pam_unix.so]]></value>
+			</cmd>
+		</item>
+		<item flag="32078">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then cat /etc/pam.d/system-auth|grep -v "\s*#";elif [ -s /etc/pam.d/common-password ];then cat /etc/pam.d/common-password|grep -v "\s*#";elif [ -s /etc/pam.d/passwd ];then cat /etc/pam.d/passwd | grep -v "\s*#";fi]]></command>
+			<value><![CDATA[auth        required      pam_env.so
+auth        sufficient    pam_fprintd.so
+auth        sufficient    pam_unix.so nullok try_first_pass remember=5
+auth        requisite     pam_succeed_if.so uid &gt;= 1000 quiet_success
+auth        required      pam_deny.so
+
+account     required      pam_unix.so
+account     sufficient    pam_localuser.so
+account     sufficient    pam_succeed_if.so uid < 1000 quiet
+account     required      pam_permit.so
+
+password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
+password    required      pam_deny.so
+
+session     optional      pam_keyinit.so revoke
+session     required      pam_limits.so
+-session     optional      pam_systemd.so
+session     [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+session     required      pam_unix.so]]></value>
+			</cmd>
+		</item>
+		<item flag="62242">
+			<cmd info="">
+			<command><![CDATA[if [ -f /etc/rsyslog.conf ];then cat /etc/rsyslog.conf | grep -v "^[[:space:]]*#" | grep -E '[[:space:]]*.+@.+';fi]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="63398">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/syslog-ng/syslog-ng.conf ];then ret_1=`cat /etc/syslog-ng/syslog-ng.conf | grep -v "^[[:space:]]*#" | grep "port(514)"`;if [ -n "$ret_1" ];then ret_2=`cat /etc/syslog-ng/syslog-ng.conf | grep -v "^[[:space:]]*#" | grep "destination(logserver)"`;fi;fi
+if [ -n "$ret_2" ];then echo "ret:set";else echo "ret:none";fi]]></command>
+			<value><![CDATA[ret:none]]></value>
+			</cmd>
+		</item>
+		<item flag="30294">
+			<cmd info="">
+			<command><![CDATA[if [ -f /etc/syslog.conf ];then cat /etc/syslog.conf | grep -v "^[[:space:]]*#" | grep -E '[[:space:]]*.+@.+';fi]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="66622">
+			<cmd info="">
+			<command><![CDATA[up_uidmin=`(grep -v ^# /etc/login.defs |grep "^UID_MIN"|awk '{print $2}')`;
+up_uidmax=`(grep -v ^# /etc/login.defs |grep "^UID_MAX"|awk '{print $2}')`;
+echo "UIDMIN="$up_uidmin;
+echo "UIDMAX="$up_uidmax;
+egrep -v "oracle|sybase|postgres" /etc/passwd | awk -F: '($3>='$up_uidmin' && $3<='$up_uidmax') {print $1":"$3}';
+echo "result="`egrep -v "oracle|sybase|postgres" /etc/passwd|awk -F: '($3>='$up_uidmin' && $3<='$up_uidmax') {print $1":"$3}'|wc -l`;
+unset up_uidmin up_uidmax]]></command>
+			<value><![CDATA[UIDMIN=1000
+UIDMAX=60000
+appadmin:1000
+jayadmin:1001
+huaadmin:1002
+caiadmin:1003
+test:1005
+result=5]]></value>
+			</cmd>
+		</item>
+		<item flag="25992">
+			<cmd info="">
+			<command><![CDATA[cat /etc/login.defs | grep -v "^[[:space:]]*#" | grep -i "^[[:space:]]*umask"]]></command>
+			<value><![CDATA[UMASK           077]]></value>
+			</cmd>
+		</item>
+		<item flag="61245">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc0.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   16 Jan 22  2018 K36mysqld -&gt; ../init.d/mysqld
+lrwxrwxrwx.  1 root root   20 Dec  8  2016 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 K90network -&gt; ../init.d/network]]></value>
+			</cmd>
+		</item>
+		<item flag="11017">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/passwd]]></command>
+			<value><![CDATA[-rw-r--r-- 1 root root 2592 May 17 15:30 /etc/passwd]]></value>
+			</cmd>
+		</item>
+		<item flag="62349">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^printer"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62795">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^bootps"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62174">
+			<cmd info="">
+			<command><![CDATA[ls -al /tmp/nsfocus_mod_tmp]]></command>
+			<value><![CDATA[-rwxrwxrwx 1 root root 0 Sep 11 11:23 /tmp/nsfocus_mod_tmp]]></value>
+			</cmd>
+		</item>
+		<item flag="61438">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/]]></command>
+			<value><![CDATA[total 1560
+drwxr-xr-x. 131 root   root     8192 Sep  6 16:21 .
+dr-xr-xr-x.  18 root   root     4096 Sep  7 11:57 ..
+drwxr-xr-x.   3 root   root       97 Dec  8  2016 abrt
+-rw-r--r--.   1 root   root       16 Dec  8  2016 adjtime
+-rw-r--r--.   1 root   root     1518 Jun  7  2013 aliases
+-rw-r--r--.   1 root   root    12288 Dec  8  2016 aliases.db
+drwxr-xr-x.   2 root   root       49 Dec  8  2016 alsa
+drwxr-xr-x.   2 root   root     4096 Feb 13  2018 alternatives
+-rw-------.   1 root   root      541 Jul 27  2015 anacrontab
+-rw-r--r--.   1 root   root       55 Mar  6  2015 asound.conf
+-rw-r--r--.   1 root   root        1 Nov 20  2015 at.deny
+drwxr-xr-x.   2 root   root       31 Dec  8  2016 at-spi2
+drwxr-x---.   3 root   root       41 Dec  8  2016 audisp
+drwxr-x---.   3 root   root       79 Dec  8  2016 audit
+drwxr-xr-x.   4 root   root       94 Dec  8  2016 avahi
+drwxr-xr-x.   2 root   root     4096 Jan 23  2018 bash_completion.d
+-rw-r--r--.   1 root   root     2835 Aug 12  2015 bashrc
+drwxr-xr-x.   2 root   root       25 Feb 13  2018 binfmt.d
+drwxr-xr-x.   2 root   root    12288 Dec  8  2016 brltty
+-rw-r--r--.   1 root   root    21929 Mar  6  2015 brltty.conf
+-rw-r--r--.   1 root   root        9 Feb 13  2018 centos-release
+-rw-r--r--.   1 root   root       51 Dec  9  2015 centos-release-upstream
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 chkconfig.d
+-rw-r--r--.   1 root   root     1165 Nov 24  2015 chrony.conf
+-rw-r-----.   1 root   chrony      9 Nov 24  2015 chrony.keys
+drwxr-xr-x.   2 root   root       25 Dec  8  2016 cifs-utils
+drwxr-xr-x.   2 root   root       51 Feb 13  2018 cron.d
+drwxr-xr-x.   2 root   root       76 Dec  8  2016 cron.daily
+-rw-------.   1 root   root        0 Jul 27  2015 cron.deny
+drwxr-xr-x.   2 root   root       44 Dec  8  2016 cron.hourly
+drwxr-xr-x.   2 root   root        6 Jun 10  2014 cron.monthly
+-rw-r--r--    1 root   root      451 Jul  6 10:37 crontab
+drwxr-xr-x.   2 root   root        6 Jun 10  2014 cron.weekly
+-rw-------.   1 root   root        0 Dec  8  2016 crypttab
+-rw-r--r--.   1 root   root     1602 Jun  7  2013 csh.cshrc
+-rw-r--r--.   1 root   root      841 Jun  7  2013 csh.login
+drwxr-xr-x.   5 root   lp       4096 Dec  8  2016 cups
+drwxr-xr-x.   2 root   root       33 Dec  8  2016 cupshelpers
+drwxr-xr-x.   4 root   root       74 Dec  8  2016 dbus-1
+drwxr-xr-x.   4 root   root       29 Dec  8  2016 dconf
+drwxr-xr-x.   2 root   root       41 Feb 13  2018 default
+drwxr-xr-x.   2 root   root       22 Dec  8  2016 depmod.d
+-rw-r--r--    1 root   root       86 Mar 24  2017 dhclient-eno16780032.conf
+drwxr-x---.   3 root   root       23 Nov 20  2015 dhcp
+-rw-r--r--.   1 root   root     5090 Sep 12  2015 DIR_COLORS
+-rw-r--r--.   1 root   root     5725 Sep 12  2015 DIR_COLORS.256color
+-rw-r--r--.   1 root   root     4669 Sep 12  2015 DIR_COLORS.lightbgcolor
+-rw-r--r--.   1 root   root     1131 Nov 21  2015 dleyna-server-service.conf
+-rw-r--r--.   1 root   root    25213 Aug  6  2015 dnsmasq.conf
+drwxr-xr-x.   2 root   root        6 Aug  6  2015 dnsmasq.d
+-rw-r--r--.   1 root   root     1285 Nov 20  2015 dracut.conf
+drwxr-xr-x.   2 root   root        6 Aug 11  2017 dracut.conf.d
+-rw-r--r--.   1 root   root     4113 Nov 21  2015 drirc
+-rw-r--r--.   1 root   root      112 Mar  6  2015 e2fsck.conf
+-rw-r--r--.   1 root   root     4760 Jun 10  2014 enscript.cfg
+-rw-r--r--.   1 root   root        0 Aug 12  2015 environment
+-rw-r--r--.   1 root   root     1317 Jun 10  2014 ethertypes
+-rw-r--r--.   1 root   root        0 Jun  7  2013 exports
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 exports.d
+lrwxrwxrwx.   1 root   root       56 Dec  8  2016 favicon.png -&gt; /usr/share/icons/hicolor/16x16/apps/fedora-logo-icon.png
+drwxr-xr-x.   2 root   root       21 Dec  8  2016 fcoe
+drwxr-xr-x.   2 root   root       44 Dec  8  2016 festival
+-rw-r--r--.   1 root   root       70 Aug 12  2015 filesystems
+drwxr-x---.   5 root   root     4096 Dec  8  2016 firewalld
+drwxr-xr-x.   3 root   root       36 Dec  8  2016 fonts
+-rw-r--r--.   1 root   root       20 Jun 24  2014 fprintd.conf
+-rw-r--r--.   1 root   root      710 Dec  8  2016 fstab
+-rw-r--r--.   1 root   root       38 Jul 22  2014 fuse.conf
+drwxr-xr-x.   7 root   root      102 Dec  8  2016 gconf
+drwxr-xr-x.   2 root   root        6 May 12  2015 gcrypt
+-rw-r--r--.   1 root   root      265 Sep 11  2015 gdbinit
+drwxr-xr-x.   2 root   root        6 Sep 11  2015 gdbinit.d
+drwxr-xr-x.   6 root   root      101 Dec  8  2016 gdm
+drwxr-xr-x.   2 root   root       25 Dec  8  2016 geoclue
+drwxr-xr-x.   3 root   root       17 Dec  8  2016 ghostscript
+drwxr-xr-x.   2 root   root        6 Jun 10  2014 gnupg
+-rw-r--r--.   1 root   root       94 Apr 29  2015 GREP_COLORS
+drwxr-xr-x.   4 root   root       38 Dec  8  2016 groff
+-rw-r--r--    1 root   root     1097 May 17 15:30 group
+-rw-r--r--.   1 root   root     1084 Mar 30 09:48 group-
+lrwxrwxrwx.   1 root   root       22 Dec  8  2016 grub2.cfg -&gt; ../boot/grub2/grub.cfg
+drwx------.   2 root   root     4096 Dec  8  2016 grub.d
+----------    1 root   root      884 May 17 15:30 gshadow
+----------.   1 root   root      875 Mar 30 09:48 gshadow-
+drwxr-xr-x.   3 root   root       19 Dec  8  2016 gss
+drwxr-xr-x.   2 root   root       26 Dec  8  2016 gssproxy
+-rw-r--r--.   1 root   root      871 Dec  8  2016 hba.conf
+-rw-r--r--.   1 root   root        9 Jun  7  2013 host.conf
+-rw-r--r--    1 root   root       13 Jan 22  2018 hostname
+-rw-r--r--    1 root   root      137 Jan 22  2018 hosts
+-rw-r--r--.   1 root   root      370 Jun  7  2013 hosts.allow
+-rw-r--r--.   1 root   root      460 Jun  7  2013 hosts.deny
+drwxr-xr-x.   2 root   root       23 Dec  8  2016 hp
+drwxr-xr-x    5 root   root       86 Mar 30 09:48 httpd
+-rw-r--r--.   1 root   root     3580 Nov 20  2015 idmapd.conf
+lrwxrwxrwx.   1 root   root       11 Dec  8  2016 init.d -&gt; rc.d/init.d
+-rw-r--r--.   1 root   root      511 Nov 20  2015 inittab
+-rw-r--r--.   1 root   root      942 Jun  7  2013 inputrc
+drwxr-xr-x.   2 root   root     4096 Dec  8  2016 iproute2
+-rw-r--r--.   1 root   root     2551 Jun 24  2015 ipsec.conf
+drwx------.   5 root   root     4096 Dec  8  2016 ipsec.d
+-rw-------.   1 root   root       31 Jun 24  2015 ipsec.secrets
+drwxr-xr-x.   2 root   root       50 Dec  8  2016 iscsi
+-rw-r--r--.   1 root   root       23 Dec  9  2015 issue
+-rw-r--r--.   1 root   root       22 Dec  9  2015 issue.net
+drwxr-xr-x.   3 root   root       59 Dec  8  2016 java
+drwxr-xr-x.   2 root   root        6 Nov 21  2015 jvm
+drwxr-xr-x.   2 root   root        6 Nov 21  2015 jvm-commmon
+drwxr-xr-x    5 root   root       41 Jun 22 18:49 kde
+-rw-r--r--.   1 root   root     7156 Dec  8  2016 kdump.conf
+drwxr-xr-x.   3 root   root       23 Dec  8  2016 kernel
+-rw-r--r--.   1 root   root      495 Nov 20  2015 krb5.conf
+-rw-r--r--    1 root   root     1128 Aug  2  2017 kshrc
+-rw-r--r--.   1 root   root      478 Oct 17  2015 ksmtuned.conf
+-rw-r--r--    1 root   root    80828 Jul 10 13:32 ld.so.cache
+-rw-r--r--    1 root   root       28 Feb 28  2013 ld.so.conf
+drwxr-xr-x.   2 root   root     4096 Jun 22 18:49 ld.so.conf.d
+-rw-r-----.   1 root   root      191 Oct 29  2014 libaudit.conf
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 libibverbs.d
+drwxr-xr-x.   2 root   root       33 Dec  8  2016 libnl
+drwxr-xr-x.   6 root   root     4096 Dec  8  2016 libreport
+-rw-r--r--.   1 root   root     2391 Oct 13  2013 libuser.conf
+drwx------.   4 root   root     4096 Dec  8  2016 libvirt
+-rw-r--r--.   1 root   root       19 Dec  8  2016 locale.conf
+lrwxrwxrwx    1 root   root       33 Sep 12  2017 localtime -&gt; /usr/share/zoneinfo/Asia/Shanghai
+-rw-r--r--    1 root   root     2025 Jan 22  2018 login.defs
+-rw-r--r--    1 root   root      663 Jan 22  2018 logrotate.conf
+drwxr-xr-x.   2 root   root     4096 Mar 30 09:48 logrotate.d
+drwxr-xr-x.   3 root   root       41 Dec  8  2016 lsm
+drwxr-xr-x.   6 root   root       94 Dec  8  2016 lvm
+-r--r--r--.   1 root   root       33 Dec  8  2016 machine-id
+-rw-r--r--.   1 root   root      111 Nov 20  2015 magic
+-rw-r--r--    1 root   root      272 May 15  2013 mailcap
+-rw-r--r--.   1 root   root     1968 Dec 17  2014 mail.rc
+-rw-r--r--.   1 root   root     5122 Nov 21  2015 makedumpfile.conf.sample
+-rw-r--r--.   1 root   root     5171 Jun 10  2014 man_db.conf
+drwxr-xr-x.   2 root   root        6 Nov 21  2015 maven
+-rw-r--r--    1 root   root    51787 May 15  2013 mime.types
+-rw-r--r--.   1 root   root      936 Mar  6  2015 mke2fs.conf
+drwxr-xr-x.   2 root   root       22 Dec  8  2016 modprobe.d
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 modules-load.d
+-rw-r--r--.   1 root   root        0 Jun  7  2013 motd
+lrwxrwxrwx.   1 root   root       17 Dec  8  2016 mtab -&gt; /proc/self/mounts
+-rw-r--r--.   1 root   root     2620 Jun 10  2014 mtools.conf
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 multipath
+lrwxrwxrwx    1 root   root       23 Jan 22  2018 my.cnf -&gt; /work/mysql/conf/my.cnf
+drwxr-xr-x.   2 root   root       30 Dec  8  2016 my.cnf.d
+-rw-r--r--.   1 root   root     8892 Jun 10  2014 nanorc
+-rw-r--r--.   1 root   root      767 Nov 20  2015 netconfig
+drwxr-xr-x.   7 root   root     4096 Dec  8  2016 NetworkManager
+-rw-r--r--.   1 root   root       58 Nov 20  2015 networks
+-rw-r--r--.   1 root   root     3390 Nov 20  2015 nfsmount.conf
+-rw-r--r--.   1 root   root     1717 Jan 22  2018 nsswitch.conf
+-rw-r--r--.   1 root   root     1726 Oct 22  2012 nsswitch.conf.bak
+-rw-r--r--    1 root   root     1735 Dec  1  2017 nsswitch.conf.rpmnew
+drwxr-xr-x.   2 root   root       36 Dec  8  2016 ntp
+-rw-r--r--.   1 root   root       91 Dec  3  2012 numad.conf
+drwxr-xr-x.   2 root   root        6 Mar  6  2015 oddjob
+-rw-r--r--.   1 root   root     4922 Mar  6  2015 oddjobd.conf
+drwxr-xr-x.   2 root   root       68 Dec  8  2016 oddjobd.conf.d
+drwxr-xr-x.   3 root   root       34 Dec  8  2016 openldap
+drwxr-xr-x.   2 root   root        6 Aug 12  2015 opt
+-rw-r--r--    1 root   root       53 Feb 13  2018 oraInst.loc
+-rw-rw-r--    1 oracle dba       792 Feb 13  2018 oratab
+-rw-r--r--.   1 root   root      393 Dec  9  2015 os-release
+drwxr-xr-x.   2 root   root       88 Dec  8  2016 PackageKit
+drwxr-xr-x.   2 root   root     4096 Jan 22  2018 pam.d
+-rw-r--r--    1 root   root     2592 May 17 15:30 passwd
+-rw-r--r--.   1 root   root     2553 Mar 30 09:48 passwd-
+-rw-r--r--.   1 root   root     1362 Jun 10  2014 pbm2ppa.conf
+-rw-r--r--.   1 root   root     2872 Jun 10  2014 pinforc
+drwxr-xr-x.   3 root   root       20 Dec  8  2016 pkcs11
+drwxr-xr-x.   9 root   root       91 Dec  8  2016 pki
+drwxr-xr-x.   2 root   root       27 Dec  8  2016 plymouth
+drwxr-xr-x.   5 root   root       49 Dec  8  2016 pm
+-rw-r--r--.   1 root   root     6300 Jun 10  2014 pnm2ppa.conf
+drwxr-xr-x.   5 root   root       69 Dec  8  2016 polkit-1
+drwxr-xr-x.   2 root   root        6 Jun 10  2014 popt.d
+drwxr-xr-x.   2 root   root     4096 Dec  8  2016 postfix
+drwxr-xr-x.   3 root   root     4096 Dec  8  2016 ppp
+drwxr-xr-x.   2 root   root      101 Feb 13  2018 prelink.conf.d
+-rw-r--r--.   1 root   root      233 Jun  7  2013 printcap
+-rw-r--r--.   1 root   root     1768 Jan 23  2018 profile
+drwxr-xr-x.   2 root   root     4096 Jun 22 18:49 profile.d
+-rw-r--r--.   1 root   root     6545 Jun  7  2013 protocols
+drwxr-xr-x.   2 root   root       75 Dec  8  2016 pulse
+drwxr-xr-x.   2 root   root       22 Dec  8  2016 purple
+-rw-------.   1 root   root        0 Dec  8  2016 .pwd.lock
+drwxr-xr-x.   2 root   root       34 Jan 22  2018 python
+drwxr-xr-x    3 root   root       48 Sep 13  2017 qemu-ga
+drwxr-xr-x.   2 root   root       49 Dec  8  2016 qemu-kvm
+-rw-r--r--.   1 root   root      433 Sep  9  2015 radvd.conf
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc0.d -&gt; rc.d/rc0.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc1.d -&gt; rc.d/rc1.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc2.d -&gt; rc.d/rc2.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc3.d -&gt; rc.d/rc3.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc4.d -&gt; rc.d/rc4.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc5.d -&gt; rc.d/rc5.d
+lrwxrwxrwx.   1 root   root       10 Dec  8  2016 rc6.d -&gt; rc.d/rc6.d
+drwxr-xr-x.  10 root   root     4096 Nov 20  2015 rc.d
+lrwxrwxrwx.   1 root   root       13 Dec  8  2016 rc.local -&gt; rc.d/rc.local
+drwxr-xr-x.   2 root   root       54 Dec  8  2016 rdma
+lrwxrwxrwx.   1 root   root       14 Dec  8  2016 redhat-release -&gt; centos-release
+-rw-r--r--.   1 root   root     1787 Jun 10  2014 request-key.conf
+drwxr-xr-x.   2 root   root       29 Dec  8  2016 request-key.d
+-rw-r--r--.   1 root   root       48 Mar 24  2017 resolv.conf
+-rw-r--r--    1 root   root     1634 Dec 25  2012 rpc
+drwxr-xr-x.   2 root   root     4096 Jun 22 18:49 rpm
+-rw-r--r--.   1 root   root      458 Nov 21  2015 rsyncd.conf
+-rw-r--r--.   1 root   root     3232 Sep  8  2015 rsyslog.conf
+drwxr-xr-x.   2 root   root       51 Dec  8  2016 rsyslog.d
+-rw-r--r--.   1 root   root      927 Nov 20  2015 rwtab
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 rwtab.d
+drwxr-xr-x.   2 root   root       35 Dec  8  2016 samba
+drwxr-xr-x.   3 root   root     4096 Dec  8  2016 sane.d
+drwxr-xr-x.   2 root   root       62 Dec  8  2016 sasl2
+drwxr-xr-x.   3 root   root       32 Dec  8  2016 scl
+-rw-------.   1 root   root      221 Aug 12  2015 securetty
+drwxr-xr-x.   6 root   root     4096 Feb 13  2018 security
+drwxr-xr-x.   3 root   root       68 Feb 13  2018 selinux
+-rw-r--r--.   1 root   root   670293 Jun  7  2013 services
+-rw-r--r--.   1 root   root      216 Nov 20  2015 sestatus.conf
+drwxr-xr-x.   2 root   root       32 Dec  8  2016 setroubleshoot
+drwxr-xr-x.   2 root   root     4096 Dec  8  2016 setuptool.d
+drwxr-xr-x.   3 root   root       20 Dec  8  2016 sgml
+----------    1 root   root     1926 Sep  6 16:21 shadow
+----------.   1 root   root     1806 May 17 15:29 shadow-
+-rw-r--r--.   1 root   root      147 Feb 13  2018 shells
+drwxr-xr-x.   3 root   root      100 Feb 13  2018 skel
+drwxr-xr-x.   3 root   root       71 Dec  8  2016 smartmontools
+-rw-r--r--.   1 root   root      256 Dec  1  2015 sos.conf
+drwxr-xr-x.   4 root   root       53 Dec  8  2016 speech-dispatcher
+drwxr-xr-x.   2 root   root     4096 Feb  5  2018 ssh
+drwxr-xr-x.   2 root   root       18 Dec  8  2016 ssl
+-rw-r--r--.   1 root   root      212 Nov 20  2015 statetab
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 statetab.d
+-rw-r-----.   1 root   root     1786 Sep 25  2012 sudo.conf
+-r--r-----    1 root   root     4185 Jul  6 10:35 sudoers
+drwxr-x---.   2 root   root        6 Nov 21  2015 sudoers.d
+-r--r-----    1 root   root     4321 May 30 15:55 sudoerse
+-rw-r-----.   1 root   root     3181 Jul 25  2013 sudo-ldap.conf
+drwxr-xr-x.   6 root   root     4096 Jul 10 13:32 sysconfig
+-rw-r--r--.   1 root   root     1630 Feb 13  2018 sysctl.conf
+drwxr-xr-x.   2 root   root       27 Dec  8  2016 sysctl.d
+drwxr-xr-x.   4 root   root     4096 Dec  8  2016 systemd
+lrwxrwxrwx.   1 root   root       14 Dec  8  2016 system-release -&gt; centos-release
+-rw-r--r--.   1 root   root       23 Dec  9  2015 system-release-cpe
+-rw-------.   1 tss    tss      7046 Nov 21  2015 tcsd.conf
+drwxr-xr-x.   2 root   root        6 Jun 11  2014 terminfo
+drwxr-xr-x.   2 root   root        6 Jan 22  2018 tmpfiles.d
+-rw-r--r--    1 root   root       45 May 10  2012 Trolltech.conf
+-rw-r--r--.   1 root   root      375 Nov 20  2015 trusted-key.key
+drwxr-xr-x.   2 root   root       67 Dec  8  2016 tuned
+drwxr-xr-x.   3 root   root       51 Jul 10 13:32 udev
+drwxr-xr-x.   2 root   root        6 Nov 20  2015 udisks2
+drwxr-xr-x.   2 root   root       65 Dec  8  2016 unbound
+-rw-r--r--.   1 root   root      163 Jun 19 19:31 .updated
+-rw-r--r--.   1 root   root      508 Jan 27  2014 updatedb.conf
+drwxr-xr-x.   2 root   root       24 Dec  8  2016 UPower
+-rw-r--r--.   1 root   root      889 Aug  8  2013 usb_modeswitch.conf
+drwxr-xr-x.   2 root   root     8192 Dec  8  2016 usb_modeswitch.d
+-rw-r--r--.   1 root   root       37 Dec  8  2016 vconsole.conf
+-rw-r--r--.   1 root   root     1982 Jun 10  2014 vimrc
+-rw-r--r--.   1 root   root     1982 Jun 10  2014 virc
+drwxr-xr-x.   4 root   root     4096 Aug 11  2017 vmware-tools
+-rw-r--r--.   1 root   root     4479 Oct 31  2014 wgetrc
+drwxr-xr-x.   2 root   root       32 Dec  8  2016 wpa_supplicant
+-rw-r--r--.   1 root   root        0 Jun 10  2014 wvdial.conf
+drwxr-xr-x.   6 root   root       97 Dec  8  2016 X11
+drwxr-xr-x.   5 root   root       94 Dec  8  2016 xdg
+-rw-------    1 root   root     1001 Nov  5  2016 xinetd.conf
+drwxr-xr-x.   2 root   root     4096 Mar 15 17:01 xinetd.d
+drwxr-xr-x.   2 root   root       20 Dec  8  2016 xml
+drwxr-xr-x.   6 root   root     4096 Dec  8  2016 yum
+-rw-r--r--.   1 root   root      970 Dec  3  2015 yum.conf
+drwxr-xr-x.   2 root   root       71 Jan 22  2018 yum.repos.d
+-rw-r--r--    1 root   root      252 Aug  2  2017 zlogin
+-rw-r--r--    1 root   root       86 Aug  2  2017 zlogout
+-rw-r--r--    1 root   root      375 Aug  2  2017 zprofile
+-rw-r--r--    1 root   root      510 Aug  2  2017 zshenv
+-rw-r--r--    1 root   root     1135 Aug  2  2017 zshrc]]></value>
+			</cmd>
+		</item>
+		<item flag="61142">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc6.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   16 Jan 22  2018 K36mysqld -&gt; ../init.d/mysqld
+lrwxrwxrwx.  1 root root   20 Dec  8  2016 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 K90network -&gt; ../init.d/network]]></value>
+			</cmd>
+		</item>
+		<item flag="11430">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/group]]></command>
+			<value><![CDATA[-rw-r--r-- 1 root root 1097 May 17 15:30 /etc/group]]></value>
+			</cmd>
+		</item>
+		<item flag="62567">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^nfslock"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62977">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^ypbind"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62106">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^lpd"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62890">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^nfs"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="8119">
+			<cmd info="">
+			<command><![CDATA[cat /etc/profile | grep -v "^[[:space:]]*#" | grep "TMOUT[[:space:]]*=[[:space:]]*[0-9]*" | grep -v "export" | sed 's/[^0-9]//g'
+cat /etc/profile | grep -v "^[[:space:]]*#" | grep "export[[:space:]]*TMOUT[[:space:]]*=[[:space:]]*[0-9]*" | sed 's/[^0-9]//g']]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="35584">
+			<cmd info="">
+			<command><![CDATA[if [ -s /etc/pam.d/system-auth ];then red_ret=`cat /etc/pam.d/system-auth | grep -v "^[[:space:]]*#" | grep "[[:space:]]*password[[:space:]]*sufficient[[:space:]]*.*remember.*"`;fi
+if [ -s /etc/pam.d/common-password ];then suse_ret=`cat /etc/pam.d/common-password | grep -v "^[[:space:]]*#" | grep "[[:space:]]*password[[:space:]]*sufficient[[:space:]]*.*remember.*"`;fi
+if [ -s /etc/pam.d/passwd ];then suse_ret2=`cat /etc/pam.d/passwd | grep -v "^[[:space:]]*#" | grep "[[:space:]]*password[[:space:]]*sufficient[[:space:]]*pam_unix.so[[:space:]]*md5[[:space:]]*shadow[[:space:]]*nullok[[:space:]]*try_first_pass[[:space:]]*use_authtok[[:space:]]*" | grep "remember=5"`;fi
+if [ -n "$red_ret" ];then echo "redhat:valid";elif [ -n "$suse_ret" ]; then echo "suse:valid";elif [ -n "$suse_ret2" ];then echo "suse2:valid";else echo "ret:invalid";fi]]></command>
+			<value><![CDATA[ret:invalid]]></value>
+			</cmd>
+		</item>
+		<item flag="61473">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc4.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   20 Mar 24  2017 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 S10network -&gt; ../init.d/network
+lrwxrwxrwx   1 root root   16 Jan 22  2018 S64mysqld -&gt; ../init.d/mysqld]]></value>
+			</cmd>
+		</item>
+		<item flag="11531">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/shadow]]></command>
+			<value><![CDATA[---------- 1 root root 1926 Sep  6 16:21 /etc/shadow]]></value>
+			</cmd>
+		</item>
+		<item flag="61798">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc5.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   20 Mar 24  2017 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 S10network -&gt; ../init.d/network
+lrwxrwxrwx   1 root root   16 Jan 22  2018 S64mysqld -&gt; ../init.d/mysqld]]></value>
+			</cmd>
+		</item>
+		<item flag="11180">
+			<cmd info="">
+			<command><![CDATA[if [ -f /etc/xinetd.conf ];then ls -al /etc/xinetd.conf | echo $(echo "obase=8;ibase=2;$(awk '{if(/^[d-]/ && NR==1 || NR==2){print substr($1, 2)}}'| sed 's/-/0/g'| sed 's/r/1/g'| sed 's/w/1/g'| sed 's/x/1/g'| sed 's/s/1/g'| sed 's/t/1/g'| sed 's/S/0/g'| sed 's/T/0/g')"|bc);elif [ -f /etc/inetd.conf ];then ls -al /etc/inetd.conf | echo $(echo "obase=8;ibase=2;$(awk '{if(/^[d-]/ && NR==1 || NR==2){print substr($1, 2)}}'| sed 's/-/0/g'| sed 's/r/1/g'| sed 's/w/1/g'| sed 's/x/1/g'| sed 's/s/1/g'| sed 's/t/1/g'| sed 's/S/0/g'| sed 's/T/0/g')"|bc);fi]]></command>
+			<value><![CDATA[600]]></value>
+			</cmd>
+		</item>
+		<item flag="13945">
+			<cmd info="">
+			<command><![CDATA[cat "/etc/ssh/sshd_config"]]></command>
+			<value><![CDATA[#	$OpenBSD: sshd_config,v 1.93 2014/01/10 05:59:19 djm Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/local/bin:/usr/bin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+# If you want to change the port on a SELinux system, you have to tell
+# SELinux about this change.
+# semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+#
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+# The default requires explicit activation of protocol 1
+#Protocol 2
+
+# HostKey for protocol version 1
+#HostKey /etc/ssh/ssh_host_key
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Lifetime and size of ephemeral version 1 server key
+#KeyRegenerationInterval 1h
+#ServerKeyBits 1024
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+# obsoletes QuietMode and FascistLogging
+#SyslogFacility AUTH
+SyslogFacility AUTHPRIV
+#LogLevel INFO
+
+# Authentication:
+
+#LoginGraceTime 2m
+#PermitRootLogin no
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+#RSAAuthentication yes
+#PubkeyAuthentication yes
+
+# The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
+# but this is overridden so installations will only check .ssh/authorized_keys
+AuthorizedKeysFile	.ssh/authorized_keys
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#RhostsRSAAuthentication no
+# similar for protocol version 2
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# RhostsRSAAuthentication and HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+PasswordAuthentication yes
+
+# Change to no to disable s/key passwords
+#ChallengeResponseAuthentication yes
+ChallengeResponseAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+#KerberosUseKuserok yes
+
+# GSSAPI options
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+#GSSAPIEnablek5users no
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+# WARNING: 'UsePAM no' is not supported in Red Hat Enterprise Linux and may cause several
+# problems.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+UsePrivilegeSeparation sandbox		# Default for new installations.
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#ShowPatchLevel no
+#UseDNS yes
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+
+# override default of no subsystems
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+
+usePAM no
+useDNS no]]></value>
+			</cmd>
+		</item>
+		<item flag="13192">
+			<cmd info="">
+			<command><![CDATA[cat /etc/pam.d/login 2>/dev/null | grep -v "^[[:space:]]*#" | grep "^[[:space:]]*auth"]]></command>
+			<value><![CDATA[auth    required     pam_tally2.so deny=30 unlock_time=300 even_deny_root root_unlock_time=30
+auth [user_unknown=ignore success=ok ignore=ignore default=bad] pam_securetty.so
+auth       substack     system-auth
+auth       include      postlogin]]></value>
+			</cmd>
+		</item>
+		<item flag="62994">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^ident"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62571">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^echo"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62699">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^discard"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="61272">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc1.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   16 Jan 22  2018 K36mysqld -&gt; ../init.d/mysqld
+lrwxrwxrwx.  1 root root   20 Dec  8  2016 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 K90network -&gt; ../init.d/network]]></value>
+			</cmd>
+		</item>
+		<item flag="62258">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^sendmail"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62198">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^ntalk"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="62748">
+			<cmd info="">
+			<command><![CDATA[chkconfig --list | grep "^chargen"]]></command>
+			<value><![CDATA[]]></value>
+			</cmd>
+		</item>
+		<item flag="11534">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/services]]></command>
+			<value><![CDATA[-rw-r--r--. 1 root root 670293 Jun  7  2013 /etc/services]]></value>
+			</cmd>
+		</item>
+		<item flag="61232">
+			<cmd info="">
+			<command><![CDATA[ls -al /tmp]]></command>
+			<value><![CDATA[total 84
+drwxrwxrwt. 17 root     root      4096 Sep 11 11:23 .
+dr-xr-xr-x. 18 root     root      4096 Sep  7 11:57 ..
+-rw-r--r--   1 root     root     52061 Sep 11 11:22 172.20.72.49_chk.xml
+drwxr-xr-x   2      501      501   122 Sep  6 14:34 365ffdc5fc4508366d4392e09765d813
+drwxr-xr-x   4 root     root        38 Sep  8 08:31 easyops
+-rw-r--r--   1 root     root        54 Sep  1 21:43 easyopsInstall.log.20180901214346
+drwxr-xr-x   2 root     root         6 Sep  2 01:12 easyops_script
+drwxrwxrwt.  2 root     root         6 Dec  8  2016 .font-unix
+drwxr-xr-x   2 root     root        18 Sep 10 17:40 hsperfdata_root
+drwxrwxrwt.  2 root     root        16 Jul 10 13:32 .ICE-unix
+drwxr-xr-x  54 root     root      4096 Sep 10 17:40 kafka-logs
+-rw-r--r--   1 root     root       700 Sep 11 11:23 nsfocus_grub_tmp
+-rwxrwxrwx   1 root     root         0 Sep 11 11:23 nsfocus_mod_tmp
+dr-xr-xr-x   9 root     sys       4096 Mar  8  2018 python
+drwx------   3 root     root        16 Jul 10 13:32 systemd-private-7099ae6e3bbf433f8df913f2a617ccaf-colord.service-rI6GWw
+drwx------   3 root     root        16 Jul 12 19:30 systemd-private-7099ae6e3bbf433f8df913f2a617ccaf-httpd.service-TS9wwY
+drwx------   3 root     root        16 Jul 10 13:32 systemd-private-7099ae6e3bbf433f8df913f2a617ccaf-rtkit-daemon.service-j9EIG7
+drwxrwxrwt.  2 root     root         6 Dec  8  2016 .Test-unix
+-rw-rw-r--   1 appadmin appadmin   139 Sep  6 16:35 upload_test.txt
+-r--r--r--   1 root     root        11 Jul 10 13:32 .X0-lock
+drwxrwxrwt.  2 root     root        15 Jul 10 13:32 .X11-unix
+drwxrwxrwt.  2 root     root         6 Dec  8  2016 .XIM-unix
+drwxrwxr-x   2 appadmin appadmin     6 Sep  6 16:35 xxtest]]></value>
+			</cmd>
+		</item>
+		<item flag="11825">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/security]]></command>
+			<value><![CDATA[total 68
+drwxr-xr-x.   6 root root 4096 Feb 13  2018 .
+drwxr-xr-x. 131 root root 8192 Sep  6 16:21 ..
+-rw-r--r--.   1 root root 4620 Aug 18  2015 access.conf
+-rw-r--r--.   1 root root   82 Aug 18  2015 chroot.conf
+drwxr-xr-x.   2 root root   65 Dec  8  2016 console.apps
+-rw-r--r--.   1 root root  604 Aug 18  2015 console.handlers
+-rw-r--r--.   1 root root  939 Aug 18  2015 console.perms
+drwxr-xr-x.   2 root root    6 Aug 18  2015 console.perms.d
+-rw-r--r--.   1 root root 3635 Aug 18  2015 group.conf
+-rw-r--r--.   1 root root 2638 Feb 13  2018 limits.conf
+drwxr-xr-x.   2 root root   26 Dec  8  2016 limits.d
+-rw-r--r--.   1 root root 1440 Aug 18  2015 namespace.conf
+drwxr-xr-x.   2 root root    6 Aug 18  2015 namespace.d
+-rwxr-xr-x.   1 root root 1019 Aug 18  2015 namespace.init
+-rw-------.   1 root root    0 Aug 18  2015 opasswd
+-rw-r--r--.   1 root root 2972 Aug 18  2015 pam_env.conf
+-rw-r--r--.   1 root root 1837 Jan 22  2018 pwquality.conf
+-rw-r--r--.   1 root root  419 Aug 18  2015 sepermit.conf
+-rw-r--r--.   1 root root 2179 Aug 18  2015 time.conf]]></value>
+			</cmd>
+		</item>
+		<item flag="61298">
+			<cmd info="">
+			<command><![CDATA[ls -al /etc/rc2.d/]]></command>
+			<value><![CDATA[total 4
+drwxr-xr-x.  2 root root   59 Jan 22  2018 .
+drwxr-xr-x. 10 root root 4096 Nov 20  2015 ..
+lrwxrwxrwx   1 root root   20 Mar 24  2017 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx.  1 root root   17 Dec  8  2016 S10network -&gt; ../init.d/network
+lrwxrwxrwx   1 root root   16 Jan 22  2018 S64mysqld -&gt; ../init.d/mysqld]]></value>
+			</cmd>
+		</item>
+	</security>
+	<security type="display">
+		<item flag="13">
+			<cmd info="">
+			<command><![CDATA[rm -v /tmp/nsfocus_grub_tmp]]></command>
+			<value><![CDATA[removed ‘/tmp/nsfocus_grub_tmp’]]></value>
+			</cmd>
+		</item>
+	</security>
+</result>
