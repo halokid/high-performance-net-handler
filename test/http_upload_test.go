@@ -8,6 +8,9 @@ import (
   "os"
   "io"
   "net/http"
+  "time"
+  "fmt"
+  "strings"
 )
 
 func TestHttpUpload(t *testing.T) {
@@ -29,3 +32,36 @@ func TestHttpUpload(t *testing.T) {
   _, err = http.Post("http://127.0.0.1:8089/hpnh_upload", content_type, buf)
   utils.CheckErr(err)
 }
+
+
+func TestGetDateTimeFolder(t *testing.T) {
+  date_time := time.Now().String()
+  fmt.Println(date_time)
+
+  folder_sli := strings.Split(date_time, " ")
+  fmt.Println(folder_sli)
+
+  date_folder := folder_sli[0]
+  fmt.Println(date_folder)
+
+  time_folder := strings.Split(folder_sli[1], ":")[0] + "-" + strings.Split(folder_sli[1], ":")[1]
+  fmt.Println(time_folder)
+
+  if utils.PathExists(date_folder + "\\" + time_folder) {
+    fmt.Println("folder exists")
+  } else {
+    fmt.Println("folder not exists")
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
