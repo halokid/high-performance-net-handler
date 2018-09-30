@@ -1,10 +1,25 @@
 package handler
 
-import "fmt"
+import (
+  "fmt"
+  "net/http"
+)
+
+
+// process frontend sample
+func HttpFrontSample(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "http frontend sample")
+}
+
+
+// process backend sample
+func HttpBackendSample() {
+  fmt.Println("http handle process in backend\n\n")
+}
 
 func HttpProcess() {
-  fmt.Println("http handle process int backend\n\n")
-  // todo: do your backend work here
+  // TODO: do your backend work here
+  HttpBackendSample()
 }
 
 

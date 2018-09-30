@@ -20,6 +20,8 @@ func DebugLog(content string) {
   }
 
   if log_flag == true {
-    log_file_handle, err := os.OpenFile()
+    log_file_handle, err := os.OpenFile(log_file, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0777)
+    CheckErr(err)
+    log_file_handle.WriteString(content + "\n\n")
   }
 }
