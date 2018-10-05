@@ -30,7 +30,6 @@ type Worker struct {
   job_channel     chan Job
   quit            chan bool
   handle_type     string
-  debug_flag      bool
 }
 
 

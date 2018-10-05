@@ -4,10 +4,10 @@ import "fmt"
 
 // some env setting
 var (
-  version     =   "1.0"
-  debug_flag  =   true
-  log_flag    =   false
-  log_file    =   "../logs/hpnh.log"
+  Version     =   "1.0"
+  Debug_flag  =   true
+  Log_flag    =   false
+  Log_file    =   "../logs/hpnh.log"
 )
 
 
