@@ -5,12 +5,11 @@ import (
   "bytes"
   "mime/multipart"
   "github.com/r00tjimmy/high-performance-net-handler/utils"
+  "github.com/r00tjimmy/high-performance-net-handler/handler"
   "os"
   "io"
   "net/http"
-  "time"
   "fmt"
-  "strings"
 )
 
 func TestHttpUpload(t *testing.T) {
@@ -35,23 +34,9 @@ func TestHttpUpload(t *testing.T) {
 
 
 func TestGetDateTimeFolder(t *testing.T) {
-  date_time := time.Now().String()
-  fmt.Println(date_time)
+  _, folder_path := handler.DateTimeFolderExists()
+  fmt.Println(folder_path)
 
-  folder_sli := strings.Split(date_time, " ")
-  fmt.Println(folder_sli)
-
-  date_folder := folder_sli[0]
-  fmt.Println(date_folder)
-
-  time_folder := strings.Split(folder_sli[1], ":")[0] + "-" + strings.Split(folder_sli[1], ":")[1]
-  fmt.Println(time_folder)
-
-  if utils.PathExists(date_folder + "\\" + time_folder) {
-    fmt.Println("folder exists")
-  } else {
-    fmt.Println("folder not exists")
-  }
 }
 
 
