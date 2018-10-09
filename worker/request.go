@@ -78,7 +78,8 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 // http upload frontend
 func HttpUpload(w http.ResponseWriter, r *http.Request) {
   utils.DebugLog("[JOB START] HttpUpload -------------------------")
-  handler.HttpUploadHandle(w, r)
+  //handler.HttpUploadHandle(w, r)
+  handler.HttpUploadDateTimeHandle(w, r)
 }
 
 

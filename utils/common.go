@@ -30,10 +30,24 @@ func DebugLog(content string) {
 /**
 check os path exist or not
  */
-func PathExists(path string) (bool, error) {
+func PathExists(path string) (bool) {
   _, err := os.Stat(path)
   if err == nil {
-    return true, nil
+    return true
   }
-  return false, err
+  return false
 }
+
+
+/**
+create folder
+ */
+func CreateFolder()  {
+
+}
+
+
+
+
+
+
