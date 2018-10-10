@@ -34,8 +34,12 @@ func TestHttpUpload(t *testing.T) {
 
 
 func TestGetDateTimeFolder(t *testing.T) {
-  _, folder_path := handler.DateTimeFolderExists()
-  fmt.Println(folder_path)
+  exists, folder_path := handler.DateTimeFolderExists()
+  fmt.Println(exists, folder_path)
+
+  err := handler.CreateDataFolder(folder_path)
+  //err := handler.CreateDataFolder("aaaaaa")
+  utils.CheckErr(err)
 
 }
 
