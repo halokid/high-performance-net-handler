@@ -57,7 +57,9 @@ if __name__ == '__main__':
 
   # if len(sys.argv) > 2:
     # http_url = sys.argv[1]
-  http_url = "http://127.0.0.1:8089/hpnh_upload"
+  # http_url = "http://127.0.0.1:8089/hpnh_upload"
+  # http_url = "http://172.20.72.33:8089/hpnh_upload"
+  http_url = "http://172.20.72.49:8080/hpnh_upload"
   # filename = "python_upload_test.txt"
   filename = "upload.xml"
   # else:
