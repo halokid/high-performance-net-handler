@@ -13,7 +13,7 @@ var (
 
 // set handler setting
 var (
-  Http_upload_path      =       "../uploads"
+  HttpUploadPath      =       "../uploads"
 )
 
 func TestUtils()  {

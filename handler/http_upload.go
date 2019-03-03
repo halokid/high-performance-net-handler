@@ -47,7 +47,7 @@ func HttpUploadDateTimeHandle(w http.ResponseWriter, r *http.Request) {
   defer form_file.Close()
 
   //create save file
-  dest_file, err := os.Create(utils.Http_upload_path + "/" + folder_path + "/" + header.Filename)
+  dest_file, err := os.Create(utils.HttpUploadPath + "/" + folder_path + "/" + header.Filename)
   utils.CheckErr(err)
   defer dest_file.Close()
 
