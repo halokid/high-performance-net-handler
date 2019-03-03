@@ -15,6 +15,7 @@ type Request struct {
 
 // make the jobs, len is max_job
 func NewRequest(max_job int, handle_type string) (*Request)  {
+  // 实际上在这里定义了 max_job 其实没什么意义， 因为逻辑已经放在了 请求http 的时候去生成job
   job := Job{pay_load:  PayLoad(max_job)}
   return &Request{job:  job, handle_type: handle_type}
 }

@@ -14,7 +14,7 @@ func HttpFrontSample(w http.ResponseWriter, r *http.Request) {
 
 // process backend sample
 func HttpBackendSample() {
-  fmt.Println("http handle process in backend\n\n")
+  fmt.Println("worker real process in backend\n\n")
 }
 
 func HttpProcess() {

@@ -19,7 +19,6 @@ func (d *Dispatcher) Run() {
   // todo: this will use job_channel put in work_pool first
   fmt.Println("make ", d.len, " workers for process jobs")
   for i := 0; i < d.len; i++ {
-    // 这里的 work_pool 是引用了同一个内存地址来的， 所以是同一个变量， 都是 d.work_pool
     worker := NewWorker(d.work_pool, d.handle_type)
     worker.Start()
   }
@@ -35,7 +34,7 @@ func (d *Dispatcher) dispatcher() {
     case job := <- Job_queue:
       go func(job Job) {
         //job_channel := <- d.work_pool
-        // TODO: handler for web frontend
+        // todo: block until d.work_pool has something
         job_channel := <- d.work_pool
         //_ := <- d.work_pool
 

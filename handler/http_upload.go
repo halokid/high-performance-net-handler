@@ -16,7 +16,7 @@ func HttpUploadHandle(w http.ResponseWriter, r *http.Request) {
   defer form_file.Close()
 
   //create save file
-  dest_file, err := os.Create(utils.Http_upload_path + "/" + header.Filename)
+  dest_file, err := os.Create(utils.HttpUploadPath + "/" + header.Filename)
   utils.CheckErr(err)
   defer dest_file.Close()
 
@@ -65,12 +65,12 @@ func CreateDataFolder(folder_path string) error  {
   date_folder := strings.Split(folder_path, "/")[0]
   time_folder := strings.Split(folder_path, "/")[1]
 
-  if !utils.PathExists(utils.Http_upload_path + "/" + date_folder) {
-    err := os.Mkdir(utils.Http_upload_path + "/" + date_folder, os.ModePerm)
+  if !utils.PathExists(utils.HttpUploadPath + "/" + date_folder) {
+    err := os.Mkdir(utils.HttpUploadPath + "/" + date_folder, os.ModePerm)
     utils.CheckErr(err)
   }
 
-  err := os.Mkdir(utils.Http_upload_path + "/" + date_folder + "/" + time_folder, os.ModePerm)
+  err := os.Mkdir(utils.HttpUploadPath + "/" + date_folder + "/" + time_folder, os.ModePerm)
   utils.CheckErr(err)
   return  err
 }
@@ -102,7 +102,7 @@ func DateTimeFolderExists() (bool, string) {
   //fmt.Println(time_folder)
 
   folder_path := date_folder + "/" + time_folder
-  if utils.PathExists( utils.Http_upload_path + "/" + date_folder + "/" + time_folder) {
+  if utils.PathExists( utils.HttpUploadPath + "/" + date_folder + "/" + time_folder) {
     fmt.Println("folder exists")
     return true, folder_path
   } else {
