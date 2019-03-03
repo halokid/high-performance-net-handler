@@ -34,6 +34,7 @@ func (d *Dispatcher) dispatcher() {
     case job := <- Job_queue:
       go func(job Job) {
         //job_channel := <- d.work_pool
+        // todo: block until d.work_pool has something
         job_channel := <- d.work_pool
         //_ := <- d.work_pool
 
