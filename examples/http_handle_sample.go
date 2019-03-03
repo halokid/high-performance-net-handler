@@ -11,10 +11,12 @@ var (
 )
 
 func main() {
+  // make the worker at first
   // make the worker, listening work_pool channel
   dispatcher := worker.NewDispatcher(max_worker, handle_type)
   dispatcher.Run()
 
+  // make the job for test sample
   // get requet
   request := worker.NewRequest(max_job, handle_type)
   request.Run()

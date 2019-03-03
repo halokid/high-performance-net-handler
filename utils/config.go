@@ -5,15 +5,15 @@ import "fmt"
 // some env setting
 var (
   Version     =   "1.0"
-  Debug_flag  =   true
-  Log_flag    =   false
-  Log_file    =   "../logs/hpnh.log"
+  DebugFlag  =   true
+  LogFlag    =   false
+  LogFile    =   "../logs/hpnh.log"
 )
 
 
 // set handler setting
 var (
-  Http_upload_path      =       "../uploads"
+  HttpUploadPath      =       "../uploads"
 )
 
 func TestUtils()  {

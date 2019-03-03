@@ -15,12 +15,12 @@ func CheckErr(err error) {
 output debug info & save log file
  */
 func DebugLog(content string) {
-  if Debug_flag {
+  if DebugFlag {
     log.Println(content)
   }
 
-  if Log_flag {
-    log_file_handle, err := os.OpenFile(Log_file, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0777)
+  if LogFlag {
+    log_file_handle, err := os.OpenFile(LogFile, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0777)
     CheckErr(err)
     log_file_handle.WriteString(content + "\n\n")
   }
