@@ -1,6 +1,13 @@
 high performance net handler use golang
 ============================
 
+
+
+
+<b>NOTICE: this project has moved to https://github.com/r00tjimmy/MonRabit <b>
+
+<br><br><br>
+### Old readme
 this is a tool for handle net requests with high performance process
 
 - support all protocol, like http, tcp, udp etc.
