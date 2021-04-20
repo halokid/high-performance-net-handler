@@ -4,7 +4,7 @@ high performance net handler use golang
 
 
 
-<b>NOTICE: this project has moved to https://github.com/r00tjimmy/MonRabit </b>
+<b>NOTICE: this project has moved to https://github.com/halokid/MonRabit </b>
 
 <br><br><br>
 ### Old readme
